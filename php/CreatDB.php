@@ -36,7 +36,7 @@ class CreateDB{
         // sql to create new table
         $sql = "CREATE TABLE IF NOT EXISTS $tablename
                 (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-     f           product_name VARCHAR(255) NOT NULL,
+                product_name VARCHAR(255) NOT NULL,
                 product_price FLOAT,
                 product_image VARCHAR(100));";
             if(!mysqli_query($this->con,$sql)){
@@ -45,5 +45,13 @@ class CreateDB{
                 return false;
             }
     }
+}
+    //get product from the database 
+    public function getData(){
+        $sql = "SELECT * FROM $this->tablename";
+        $result = mysqli_query($this->con,$sql);
+        if(mysqli_num_rows($result)>0){
+            return $result;
+        }
 }
 }

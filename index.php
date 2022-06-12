@@ -75,10 +75,11 @@ $database = new CreateDB("Productdb","Producttb")
           <div class="row">
           <?php
           // for($i=0;$i<30;$i++)
-          component("Prodect 1",590,"./imgs/access1.jpg");
-          component("Prodect 2",590,"./imgs/access2.jpg");
-          component("Prodect 3",590,"./imgs/access3.jpg");
-          component("Prodect 4",590,"./imgs/access5.jpg");
+          // component("Prodect 1",590,"./imgs/access1.jpg");
+          $result = $database->getData();
+          while($row = mysqli_fetch_assoc($result)){
+            component($row['product_name'],$row['product_price'],$row['product_image']);
+          }
           ?>
 
           </div>
